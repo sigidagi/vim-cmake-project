@@ -22,7 +22,8 @@ function! s:set_options()
     let s:options = {
     \  'g:cmake_project_show_bar':                1,
     \  'g:loaded_cmake_project':                  1,
-    \  'g:cmake_project_build_directory':        'build'
+    \  'g:cmake_project_build_directory':        'build',
+    \  'g:cmake_project_generator':              'Unix Makefiles'
     \ }
 
     for aOption in keys(s:options)
@@ -187,7 +188,7 @@ function! s:cmake_project_build() abort
     if !isdirectory(build_directory)
         call mkdir(build_directory, "p")
     endif
-    let command = "cmake -G\"Unix Makefiles\" -B" . build_directory . " -H" . s:cmake_project_source_directory 
+    let command = "cmake -G\"" . g:cmake_project_generator . "\" -B" . build_directory . " -H" . s:cmake_project_source_directory 
     if s:cmake_project_tmux_running
         call VimuxRunCommand(command)
     else
