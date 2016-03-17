@@ -112,6 +112,16 @@ Example:
 >
     let g:cmake_project_build_directory = "build-custom" 
 <
+                                               *g:cmake_project_generator*
+g:cmake_project_build_directory~
+Default: "Unix Makefiles" 
+
+Change this parameter to set different cmake generator
+
+Example:
+>
+    let g:cmake_project_generator = "MinGW Makefiles" 
+<
 Default mapping:
 
 map <Leader>pb <Plug>CMakeBuild~
